@@ -1,0 +1,88 @@
+{
+	"name": "inventory-connector-v1",
+	"config": {
+		"connector.class": "io.debezium.connector.mysql.MySqlConnector",
+
+		"database.server.id": "184054",
+		"database.server.name": "dbserver1",
+		"database.hostname": "mysql-primary",
+		"database.dbname": "inventory",
+		"database.port": "3306",
+		"database.user": "dbz",
+		"database.password": "dbz",
+		"database.serverTimezone": "Asia/Seoul",
+        "_database.allowPublicKeyRetrieval": "true",
+		"_database.include.list": "inventory",
+
+		"table.whitelist": "inventory.customers",
+		"_table.include.list": "customers",
+
+		"tasks.max": "1",
+		"tombstones.on.delete": "true",
+
+		"snapshot.mode": "initial",
+		"snapshot.locking.mode": "none",
+
+		"errors.tolerance": "all",
+		"debug": "true",
+		"errors.log.enable": "true",
+		"errors.log.include.message": "true",
+              
+		"database.history.kafka.bootstrap.servers": "kafka:29092",
+		"database.history.kafka.topic": "history.customers",
+		"database.history.skip.unparseable.ddl": "true",
+
+		"_database.history.producer.sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"PORVWUXPJWCQHDF2\" password=\"NoDBs7CvjSlaONTiMXPDrNwgafr8HNgXeLvgWjHidrE7R+wH3rruH6b5kZt92XHH\";",
+		"_database.history.producer.sasl.mechanism": "PLAIN",
+		"_database.history.producer.security.protocol": "SASL_SSL",
+		"_database.history.producer.ssl.endpoint.identification.algorithm": "https",
+		"_database.history.consumer.sasl.jaas.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"PORVWUXPJWCQHDF2\" password=\"NoDBs7CvjSlaONTiMXPDrNwgafr8HNgXeLvgWjHidrE7R+wH3rruH6b5kZt92XHH\";",
+		"_database.history.consumer.sasl.mechanism": "PLAIN",
+		"_database.history.consumer.security.protocol": "SASL_SSL",
+		"_database.history.consumer.ssl.endpoint.identification.algorithm": "https",
+
+		"include.schema.changes": "true",
+
+		"producer.override.buffer.memory": "500000",
+		"producer.override.linger.ms": "100",
+		"producer.override.compression.type": "lz4",
+
+		"time.precision.mode": "connect",
+		"decimal.handling.mode": "double",
+
+		"topic.creation.groups": "default_group",
+		"topic.creation.default.replication.factor": 1,
+		"topic.creation.default.partitions": 3,
+		"topic.creation.default.cleanup.policy": "compact",
+		"topic.creation.default.compression.type": "lz4",
+
+		"_topic.creation.inventory.include": "dbserver1\\.inventory\\.*",
+		"_topic.creation.inventory.partitions": 5,
+		"_topic.creation.inventory.cleanup.policy": "compact",
+		"_topic.creation.inventory.delete.retention.ms": 7776000000,
+    
+		"_topic.creation.applicationlogs.include": "dbserver1\\.logs\\.applog-.*",  
+		"_topic.creation.applicationlogs.exclude": "dbserver1\\.logs\\.applog-old-.*",  
+		"_topic.creation.applicationlogs.replication.factor": 1,
+		"_topic.creation.applicationlogs.partitions": 20,
+		"_topic.creation.applicationlogs.cleanup.policy": "delete",
+		"_topic.creation.applicationlogs.retention.ms": 7776000000,
+		"_topic.creation.applicationlogs.compression.type": "lz4",
+
+		"_transforms": "unwrap",
+		"_transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+		"_transforms.unwrap.drop.tombstones": "false",
+		"_transforms.unwrap.delete.handling.mode": "none",
+
+		"key.converter.schemas.enable": true,
+		"value.converter.schemas.enable": true,
+
+		"__CONFLUENT__": "------------------------------------------------------------",
+		"_key.converter": "io.confluent.connect.avro.AvroConverter",
+		"_key.converter.schema.registry.url": "http://registry:8080/apis/ccompat/v6",
+		"_value.converter": "io.confluent.connect.avro.AvroConverter",
+		"_value.converter.schema.registry.url": "http://registry:8080/apis/ccompat/v6",
+		"_value.subject.name.strategy": "io.confluent.kafka.serializers.subject.TopicRecordNameStrategy"
+     
+	}
+}

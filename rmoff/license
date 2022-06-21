@@ -1,0 +1,9 @@
+https://docs.confluent.io/platform/current/connect/license.html
+
+connect
+confluent.license.topic=_confluent-command
+
+C3
+confluent.license=Xyz
+
+

@@ -1,0 +1,6 @@
+export CCLOUD_BROKER_HOST=xxxxx.confluent.cloud
+export CCLOUD_API_KEY=foo
+export CCLOUD_API_SECRET=zzzz
+export CCLOUD_SCHEMA_REGISTRY_URL=https://yyyyyy.aws.confluent.cloud
+export CCLOUD_SCHEMA_REGISTRY_API_KEY=yyyy
+export CCLOUD_SCHEMA_REGISTRY_API_SECRET=yyyy
